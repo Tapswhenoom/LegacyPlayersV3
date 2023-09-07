@@ -18,8 +18,6 @@ services:
   webclient:
     build: ./Webclient
     restart: on-failure
-    volumes:
-    - ./Webclient:/var/www 
     networks:
     - rpll
 
@@ -30,22 +28,9 @@ services:
     - rpll
     ports:
     - '80:80'
-  
- # filestorage:
- #   image: nginx:alpine
- #   restart: on-failure
- #   volumes:
- #     - ./Addons:/usr/share/nginx/html  # Assuming you still want to serve files from this location
- #     - webclient_data:/var/www  # Mount the volume from the webclient container
- #   ports:
- #     - '8080:80'  # Expose the file storage on port 8080
- #   networks:
- #     - rpll
-
 
 volumes:
   rpll_backend_storage:
-#  webclient_data:
 
 networks:
   rpll:
